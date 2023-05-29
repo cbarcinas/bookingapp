@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-const { Schema } = mongoose;
 
 const HotelSchema = new Mongoose.Schema({
   name: {
@@ -46,3 +45,5 @@ const HotelSchema = new Mongoose.Schema({
     default: false,
   },
 });
+
+export default mongoose.model('Hotel', HotelSchema);
