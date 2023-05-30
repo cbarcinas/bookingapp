@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const HotelSchema = new Mongoose.Schema({
+const HotelSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -21,10 +21,14 @@ const HotelSchema = new Mongoose.Schema({
     type: String,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   photos: {
     type: [String],
   },
-  description: {
+  desc: {
     type: String,
     required: true,
   },
