@@ -33,6 +33,15 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete
+router.delete('/:id', async (req, res) => {
+  try {
+    await Hotel.findByIdAndDelete(req.params.id);
+    res.status(200).json('Hotel deleted from database');
+  } catch (error) {
+    res.status(500).json(err);
+  }
+});
+
 // Get
 // Get All
 
