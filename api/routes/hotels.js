@@ -1,5 +1,6 @@
 import express from 'express';
 import Hotel from '../models/Hotel.js';
+// import { createError } from '../utils/error.js';
 
 const router = express.Router();
 
@@ -22,6 +23,7 @@ router.put('/:id', async (req, res) => {
     const updatedHotel = await Hotel.findByIdAndUpdate(
       req.params.id,
       {
+        // MongoDB $set
         $set: req.body,
       },
       { new: true }
@@ -53,12 +55,12 @@ router.get('/:id', async (req, res) => {
 });
 
 // Get All
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   try {
     const hotels = await Hotel.find();
     res.status(200).json(hotels);
-  } catch (error) {
-    res.status(500).json(err);
+  } catch (err) {
+    next(err);
   }
 });
 
