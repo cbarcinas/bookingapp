@@ -1,16 +1,23 @@
+import Joi from 'joi';
+import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
+// import generateAuthToken from '../utils/generateAuthToken.js';
 
-export const register = async (req, res, next) => {
-  try {
-    const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
+// Register
+export const register = async (req, res) => {
+  // Create Validation Schema
+  const schema = Joi.object({
+    username: Joi.string().min(3).max(30).required(),
+    email: Joi.string().min(3).max(200).required().email(),
+    password: Joi.string().min(6).max(200).required(),
+  });
 
-    await newUser.save();
-    res.status(201).send('User sucessfully created');
-  } catch (err) {
-    next(err);
-  }
+  // If joi validate() returns an error object, we can
+  // send the error message to the client
+  const { error } = schema.validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  //
+  let user = await User.findOne({ email: req.body.email });
+  if (user) return res.status(400).send('User already exists...');
 };
