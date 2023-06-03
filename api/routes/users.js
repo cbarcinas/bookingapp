@@ -28,3 +28,4 @@ router.get('/:id', getUser);
 router.get('/', getAllUsers);
 
 export default router;
+
