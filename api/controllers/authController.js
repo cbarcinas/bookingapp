@@ -53,11 +53,11 @@ export const login = async (req, res) => {
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  // Check if user email already exists
+  // Check if user email already exists using mongodb func findOne() to search db
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send('Email does not exist...');
 
-  //
+  // Use bcrypt to compare incoming password from req.body and the user password in the db
   const isValid = await bcrypt.compare(req.body.password, user.password);
   if (!isValid) return res.status(400).send('Invalid email or password..');
 
