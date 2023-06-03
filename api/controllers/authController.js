@@ -7,7 +7,6 @@ import { generateAuthToken } from '../utils/generateAuthToken.js';
 
 // Register
 // Register
-// Register
 export const register = async (req, res) => {
   // Create Validation Schema
   const schema = Joi.object({
@@ -44,7 +43,6 @@ export const register = async (req, res) => {
 
 // Login Function
 // Login Function
-// Login Function
 export const login = async (req, res) => {
   // Validate email and password
   const schema = Joi.object({
@@ -57,11 +55,11 @@ export const login = async (req, res) => {
 
   // Check if user email already exists
   let user = await User.findOne({ email: req.body.email });
-  if (user) return res.status(400).send('Email already exists...');
+  if (!user) return res.status(400).send('Email does not exist...');
 
   //
-  const isValid = bcrypt.compareSync(req.body.password, user.password);
-  if (!isValid) return res.status(400).send('Invalid email or password...');
+  const isValid = await bcrypt.compare(req.body.password, user.password);
+  if (!isValid) return res.status(400).send('Invalid email or password..');
 
   // If email or password are both true, then we can generate and send the token
   const token = generateAuthToken(user);
