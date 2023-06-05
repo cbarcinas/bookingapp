@@ -1,7 +1,7 @@
 import Joi from 'joi';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
-import { generateAuthToken } from '../utils/generateAuthToken.js';
 
 // File contains 2 functions Register() & Login()
 
@@ -32,12 +32,21 @@ export const register = async (req, res) => {
   const salt = bcrypt.genSaltSync(10);
   user.password = bcrypt.hashSync(user.password, salt);
 
-  // Save user document to the db
-  user = await user.save();
+  // Saves user document which consists of username,email,password to the db
+  await user.save();
 
   // Create token using generateAuthToken() from utils file
-  const token = generateAuthToken(user);
-
+  // The token should never contain sensitive data
+  const jwtSecretKey = process.env.JWT_KEY;
+  const token = jwt.sign(
+    {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    jwtSecretKey
+  );
   res.send(token);
 };
 
@@ -46,7 +55,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   // Validate email and password
   const schema = Joi.object({
-    email: Joi.string().min(3).max(200).required().email(),
+    username: Joi.string().min(3).max(200).required(),
     password: Joi.string().min(6).max(200).required(),
   });
 
@@ -54,15 +63,23 @@ export const login = async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   // Check if user email already exists using mongodb func findOne() to search db
-  let user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).send('Email does not exist...');
+  let user = await User.findOne({ username: req.body.username });
+  if (!user) return res.status(400).send('Username does not exist...');
 
   // Use bcrypt to compare incoming password from req.body and the user password in the db
   const isValid = await bcrypt.compare(req.body.password, user.password);
-  if (!isValid) return res.status(400).send('Invalid email or password..');
+  if (!isValid) return res.status(400).send('Invalid username or password..');
 
-  // If email or password are both true, then we can generate and send the token
-  const token = generateAuthToken(user);
+  // If the password is validated then we can proceed to creating a new token to hide user data
+  const jwtSecretKey = process.env.JWT_KEY;
+  const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, jwtSecretKey);
 
-  res.send(token);
+  // We need to hide the password and isAdmin
+  const { password, isAdmin, ...otherDetails } = user._doc;
+  res
+    .cookie('access_token', token, {
+      httpOnly: true,
+    })
+    .status(200)
+    .json({ ...otherDetails });
 };
