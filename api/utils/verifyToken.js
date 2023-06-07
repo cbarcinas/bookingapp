@@ -14,13 +14,13 @@ export const verifyToken = (req, res, next) => {
   });
 };
 
-// export const verifyUser = (err,req, res, next) => {
-//   verifyToken(req, res, () => {
-//     // compare the id from out jwt token to id coming in from path params /checkuser/:id
-//     if (decoded.id === req.params.id || decoded.user.isAdmin) {
-//       next();
-//     } else {
-//       return next(createError(401, 'Access denied, not authorized'));
-//     }
-//   });
-// };
+export const verifyUser = (err, req, res, next) => {
+  verifyToken(req, res, () => {
+    // compare the id from our token to id coming in from path params /checkuser/:id
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+      next();
+    } else {
+      return next(createError(403, 'Access denied, not authorized'));
+    }
+  });
+};
