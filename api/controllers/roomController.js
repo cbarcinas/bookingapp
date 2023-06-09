@@ -53,10 +53,10 @@ export const deleteRoom = async (req, res, next) => {
 };
 
 // Get
-export const getHotel = async (req, res, next) => {
+export const getRoom = async (req, res, next) => {
   try {
-    const hotel = await Hotel.findById(req.params.id);
-    res.status(200).json(hotel);
+    const room = await Room.findById(req.params.id);
+    res.status(200).json(room);
   } catch (err) {
     next(err);
   }
