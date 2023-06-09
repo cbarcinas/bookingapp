@@ -2,6 +2,7 @@ import Room from '../models/Room.js';
 import Hotel from '../models/Hotel.js';
 import { createError } from '../utils/error.js';
 
+// Create
 export const createRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   // Creates new Room using the req body
@@ -23,12 +24,11 @@ export const createRoom = async (req, res, next) => {
   }
 };
 
-
 // Update
-export const updateHotel = async (req, res, next) => {
+export const updateRoom = async (req, res, next) => {
   // id should already exist in db since we are updating existing entry
   try {
-    const updatedHotel = await Hotel.findByIdAndUpdate(
+    const updatedRoom = await Room.findByIdAndUpdate(
       req.params.id,
       {
         // MongoDB $set
@@ -36,7 +36,7 @@ export const updateHotel = async (req, res, next) => {
       },
       { new: true }
     );
-    res.status(200).json(updatedHotel);
+    res.status(200).json(updatedRoom);
   } catch (err) {
     next(err);
   }
