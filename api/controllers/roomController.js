@@ -4,6 +4,7 @@ import { createError } from '../utils/error.js';
 
 // Create
 export const createRoom = async (req, res, next) => {
+  // hotelid coming from createRoom route url
   const hotelId = req.params.hotelid;
   // Creates new Room using the req body
   const newRoom = new Room(req.body);
@@ -44,8 +45,18 @@ export const updateRoom = async (req, res, next) => {
 
 // Delete
 export const deleteRoom = async (req, res, next) => {
+  // hotelid coming from createRoom route url
+  const hotelId = req.params.hotelid;
+
   try {
     await Room.findByIdAndDelete(req.params.id);
+    try {
+      await Hotel.findByIdAndUpdate(hotelId, {
+        $pull: { rooms: req.params.id },
+      });
+    } catch (err) {
+      next(err);
+    }
     res.status(200).json('Room deleted from database');
   } catch (err) {
     next(err);
