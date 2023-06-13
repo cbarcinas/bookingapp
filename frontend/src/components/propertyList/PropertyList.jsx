@@ -15,20 +15,20 @@ const PropertyList = () => {
   return (
     <div className="pList">
       {loading ? (
-        'Loading please wait'
+        "loading"
       ) : (
         <>
           {data &&
-            images.map((img) => (
-              <div className="pListItem">
+            images.map((img,i) => (
+              <div className="pListItem" key={i}>
                 <img
-                  src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg"
+                  src={img}
                   alt=""
                   className="pListImg"
                 />
                 <div className="pListTitles">
-                  <h1>Villas</h1>
-                  <h2>2331 hotels</h2>
+                  <h1>{data[i]?.type}</h1>
+                  <h2>{data[i]?.count} {data[i]?.type}</h2>
                 </div>
               </div>
             ))}
