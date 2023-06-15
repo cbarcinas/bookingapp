@@ -1,10 +1,8 @@
 import {
   faBed,
   faCalendarDays,
-  faCar,
   faPerson,
   faPlane,
-  faTaxi,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './header.css';
@@ -49,11 +47,7 @@ const Header = ({ type }) => {
 
   return (
     <div className="header">
-      <div
-        className={
-          type === 'list' ? 'headerContainer listMode' : 'headerContainer'
-        }
-      >
+      <div className="headerContainer">
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
@@ -64,26 +58,19 @@ const Header = ({ type }) => {
             <span>Flights</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car rentals</span>
-          </div>
-          <div className="headerListItem">
             <FontAwesomeIcon icon={faBed} />
             <span>Attractions</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
           </div>
         </div>
         {type !== 'list' && (
           <>
             <h1 className="headerTitle">Let's Travel The World.</h1>
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
+              Get rewarded for traveling and unlock instant savings of 10% or
+              more when signing up for an account.
             </p>
             <button className="headerBtn">Sign in / Register</button>
+            {/* Header Search Field Container */}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -94,7 +81,8 @@ const Header = ({ type }) => {
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
-              <div className="headerSearchItem">
+              {/* Calendar Search */}
+              <div className="headerSearchItem calendarTab">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                 <span
                   onClick={() => setOpenDate(!openDate)}
@@ -114,7 +102,8 @@ const Header = ({ type }) => {
                   />
                 )}
               </div>
-              <div className="headerSearchItem">
+              {/* Person Count Selection*/}
+              <div className="headerSearchItem peopleCountTab">
                 <FontAwesomeIcon icon={faPerson} className="headerIcon" />
                 <span
                   onClick={() => setOpenOptions(!openOptions)}
@@ -194,6 +183,7 @@ const Header = ({ type }) => {
                 </button>
               </div>
             </div>
+            {/* End Header Search Field Container */}
           </>
         )}
       </div>
