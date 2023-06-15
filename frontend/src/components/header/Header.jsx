@@ -48,6 +48,7 @@ const Header = ({ type }) => {
   return (
     <div className="header">
       <div className="headerContainer">
+        {/* Header List Items */}
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
@@ -64,14 +65,15 @@ const Header = ({ type }) => {
         </div>
         {type !== 'list' && (
           <>
-            <h1 className="headerTitle">Let's Travel The World.</h1>
+            <h1 className="headerTitle">Let's Travel The World Together.</h1>
             <p className="headerDesc">
               Get rewarded for traveling and unlock instant savings of 10% or
               more when signing up for an account.
             </p>
-            <button className="headerBtn">Sign in / Register</button>
+            <button className="ctaBtn">Sign in / Register</button>
             {/* Header Search Field Container */}
             <div className="headerSearch">
+              {/* Location Input */}
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
