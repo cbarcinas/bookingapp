@@ -70,7 +70,7 @@ const Header = ({ type }) => {
               Get rewarded for traveling and unlock instant savings of 10% or
               more when signing up for an account.
             </p>
-            <button className="ctaBtn">Sign in / Register</button>
+            <button className="ctaBtn">Sign Up</button>
             {/* Header Search Field Container */}
             <div className="headerSearch">
               {/* Location Input */}
