@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   position: relative;
+  padding: 0 1rem;
 }
 
 .headerContainer {
@@ -12,26 +13,29 @@
   margin: 20px 0px 100px 0px;
 }
 
-.headerContainer.listMode {
-  margin: 20px 0px 0px 0px;
-}
-
 .headerList {
   display: flex;
-  gap: 40px;
+  gap: 5px;
   margin-bottom: 50px;
 }
 
 .headerListItem {
+  padding: 0.5rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
-.headerListItem.active {
-  border: 1px solid white;
-  padding: 10px;
-  border-radius: 20px;
+.headerListItem:hover {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.headerTitle {
+  font-size: 2.2rem;
 }
 
 .headerDesc {
@@ -47,29 +51,39 @@
   cursor: pointer;
 }
 
+/* .headerSearch { */
+/* height: 30px; */
+/* background-color: red; */
+/* border: 3px solid #febb02; */
+/* display: flex; */
+/* align-items: center; */
+/* justify-content: space-around; */
+/* padding: 10px 0px; */
+/* border-radius: 5px; */
+/* position: absolute; */
+/* bottom: -25px; */
+/* width: 100%; */
+/* max-width: 1024px; */
+/* } */
+
 .headerSearch {
-  height: 30px;
-  background-color: white;
-  border: 3px solid #febb02;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 10px 0px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: -25px;
+  background-color: #fff;
   width: 100%;
-  max-width: 1024px;
+  margin: 2rem auto 0rem;
+  border-radius: 10px;
+  padding: 0.5rem 0;
 }
 
 .headerIcon {
-  color: lightgray;
+  color: rgb(149, 149, 149);
 }
 
 .headerSearchItem {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  margin: 2rem 0;
 }
 
 .headerSearchInput {
@@ -78,21 +92,29 @@
 }
 
 .headerSearchText {
-  color: lightgray;
+  color: rgb(149, 149, 149);
   cursor: pointer;
+}
+
+.calendarTab {
+  position: relative;
 }
 
 .date {
   position: absolute;
-  top: 50px;
+  top: 28px;
   z-index: 2;
+}
+
+.peopleCountTab {
+  position: relative;
 }
 
 .options {
   z-index: 2;
   position: absolute;
-  top: 50px;
-  background-color: white;
+  top: -150px;
+  background-color: rgb(255, 255, 255);
   color: gray;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
