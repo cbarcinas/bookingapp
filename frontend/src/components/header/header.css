@@ -37,11 +37,12 @@
 }
 
 .headerTitle {
-  font-size: 2.2rem;
+  font-size: 2.6rem;
+  font-weight: 800;
 }
 
 .headerDesc {
-  margin: 20px 0px;
+  margin: 25px 0px;
 }
 
 /* .headerSearch { */
@@ -58,6 +59,31 @@
 /* width: 100%; */
 /* max-width: 1024px; */
 /* } */
+
+.headerTitle,
+.headerDesc,
+.ctaBtn {
+  text-align: center;
+}
+
+.ctaBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.headerBtn,
+.ctaBtn {
+  background-color: #0071c2;
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
 
 .headerSearch {
   background-color: #fff;
@@ -140,15 +166,4 @@
 
 .optionCounterButton:disabled {
   cursor: not-allowed;
-}
-
-.headerBtn {
-  background-color: #0071c2;
-  color: white;
-  font-weight: 500;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
 }
