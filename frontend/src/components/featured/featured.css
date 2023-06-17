@@ -1,10 +1,10 @@
 .featuredCarousel {
-  margin: 0 auto;
-  width: 360px;
+  margin: 1rem auto 2rem;
+  width: 100%;
   min-width: 360px;
   cursor: grab;
   overflow: hidden;
-  /* max-width: max-content; */
+  max-width: max-content;
 }
 
 .featuredInnerCarousel {
@@ -14,17 +14,15 @@
 
 .featuredItem {
   position: relative;
-  display: grid;
-  place-items: center;
-  align-items: center;
-  color: white;
-  /* min-height: 10rem;
-  min-width: 10rem; */
-  margin: 0 0.5rem;
+  margin-right: 1rem;
+}
+
+.featuredItem:first-child {
+  margin-left: 1rem;
 }
 
 .featuredImg {
-  width: 11rem;
+  width: 11.5rem;
   height: 10rem;
   border-radius: 0.5rem;
   object-fit: cover;
@@ -32,7 +30,9 @@
 }
 
 .featuredTitles {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+  color: #3a3a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
 }
