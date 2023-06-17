@@ -3,10 +3,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 30px; */
 }
 
 .homeTitle {
+  color: #333;
   width: 1024px;
-  font-size: 20px;
+  font-size: 1.5rem;
+  text-align: center;
 }
