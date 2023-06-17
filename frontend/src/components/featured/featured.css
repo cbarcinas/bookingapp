@@ -1,28 +1,37 @@
-.featured{
-  width: 100%;
-  max-width: 1024px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  z-index: 1;
-}
-
-.featuredItem{
-  position: relative;
-  color: white;
-  border-radius: 10px;
+.featuredCarousel {
+  margin: 0 auto;
+  width: 360px;
+  min-width: 360px;
+  cursor: grab;
   overflow: hidden;
-  height: 250px;
-  flex:1
+  /* max-width: max-content; */
 }
 
-.featuredImg{
-  width: 100%;
-  height: 100%;
+.featuredInnerCarousel {
+  /* background: rgb(77, 161, 188); */
+  display: flex;
+}
+
+.featuredItem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-items: center;
+  color: white;
+  /* min-height: 10rem;
+  min-width: 10rem; */
+  margin: 0 0.5rem;
+}
+
+.featuredImg {
+  width: 11rem;
+  height: 10rem;
+  border-radius: 0.5rem;
   object-fit: cover;
+  pointer-events: none;
 }
 
-.featuredTitles{
+.featuredTitles {
   position: absolute;
   bottom: 20px;
   left: 20px;
