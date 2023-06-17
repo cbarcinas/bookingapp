@@ -14,7 +14,8 @@ const Featured = () => {
   const carousel = useRef();
 
   useEffect(() => {
-    console.log(carousel.current);
+    // console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, []);
 
   return (
@@ -22,7 +23,7 @@ const Featured = () => {
       <motion.div ref={carousel} className="featuredCarousel">
         <motion.div
           drag="x"
-          dragConstraints={{ right: 0 }}
+          dragConstraints={{ right: 0, left: -width }}
           className="featuredInnerCarousel"
         >
           {loading ? (
