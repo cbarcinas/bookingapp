@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   height: 50px;
   background-color: #003580;
   display: flex;
@@ -6,7 +6,7 @@
   padding: 0 1rem;
 }
 
-.navContainer{
+.navContainer {
   width: 100%;
   max-width: 1024px;
   color: white;
@@ -15,14 +15,16 @@
   justify-content: space-between;
 }
 
-.logo{
+.logo {
   font-weight: 500;
 }
 
-.navButton{
+.navButton {
   margin-left: 20px;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   color: #003580;
+  border-radius: 5px;
+  font-weight: 700;
 }

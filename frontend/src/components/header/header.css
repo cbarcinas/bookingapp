@@ -16,6 +16,7 @@
 .headerList {
   display: flex;
   gap: 5px;
+  justify-content: center;
   margin-bottom: 1.5rem;
 }
 
