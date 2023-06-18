@@ -13,7 +13,6 @@ const PropertyList = () => {
   const carousel = useRef();
 
   useEffect(() => {
-    // console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
     setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
   }, []);
 
@@ -31,6 +30,7 @@ const PropertyList = () => {
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
+          whileTap={{ cursor: 'grabbing' }}
           className="pListInnerCarousel"
         >
           {loading ? (
