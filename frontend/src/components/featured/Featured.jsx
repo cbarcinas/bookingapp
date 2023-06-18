@@ -24,6 +24,7 @@ const Featured = () => {
         <motion.div
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
+          whileTap={{ cursor: 'grabbing' }}
           className="featuredInnerCarousel"
         >
           {loading ? (
