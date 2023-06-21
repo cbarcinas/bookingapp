@@ -96,7 +96,7 @@ const Header = ({ type }) => {
                 ease: [0, 0.71, 0.2, 1.01],
               }}
             >
-              <h1 className="headerTitle">Let' Travel The World Together.</h1>
+              <h1 className="headerTitle">Let's Travel The World Together.</h1>
               <p className="headerDesc">
                 Get rewarded for traveling and unlock instant savings of 10% or
                 more when signing up for an account.
