@@ -13,7 +13,9 @@ const PropertyList = () => {
   const carousel = useRef();
 
   useEffect(() => {
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    setWidth(
+      carousel.current.scrollWidth - (carousel.current.offsetWidth - 15)
+    );
   }, []);
 
   const images = [

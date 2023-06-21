@@ -15,7 +15,9 @@ const Featured = () => {
 
   useEffect(() => {
     // console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
-    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    setWidth(
+      carousel.current.scrollWidth - (carousel.current.offsetWidth - 15)
+    );
   }, []);
 
   return (
